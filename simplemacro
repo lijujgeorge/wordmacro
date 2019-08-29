@@ -1,0 +1,26 @@
+Sub Macro1()
+'
+' Macro1 Macro
+'add a command to go to the start of the document
+Selection.HomeKey Unit:=wdStory
+Macro2
+
+    
+ 'Remove the last comma
+    Selection.TypeBackspace
+End Sub
+
+
+Sub Macro2()
+'
+Selection.HomeKey Unit:=wdLine
+    Selection.TypeText Text:="'"
+    Selection.EndKey Unit:=wdLine
+
+    Selection.TypeText Text:="',"
+'Delete the line if it is empty
+
+        If Selection.MoveDown(wdLine, 1) = 1 Then
+         Macro2
+        End If
+End Sub
